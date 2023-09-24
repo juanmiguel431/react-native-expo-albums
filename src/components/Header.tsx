@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f8f8',
     borderWidth: 1,
     elevation: 40,
-    height: 120,
+    height: 60,
     justifyContent: 'center',
     // paddingTop: 15,
 

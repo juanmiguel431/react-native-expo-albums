@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { jsonPlaceHolder } from '../api';
 import { Album } from '../models/album';
 import AlbumDetail from './AlbumDetail';
@@ -27,11 +27,11 @@ export class AlbumList extends Component<AlbumListProps, AlbumListState> {
 
   render() {
     return (
-      <View>
+      <ScrollView>
         {this.state.albums.map((i) => (
           <AlbumDetail key={i.id} album={i}/>
         ))}
-      </View>
+      </ScrollView>
     );
   }
 }
