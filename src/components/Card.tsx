@@ -25,7 +25,7 @@ export const Card: React.FC<CardProps> = ({ title, description, thumbnailUri, im
           <Text>{description}</Text>
         </View>
       </View>
-      <View style={styles.section}>
+      <View style={styles.imageContainer}>
         <Image source={{ uri: imageUri }} style={styles.image}/>
       </View>
     </View>
@@ -50,33 +50,38 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'column',
+    flex: 1,
     justifyContent: 'space-around',
-
   },
   headerText: {
-    fontSize: 18
+    fontSize: 18,
   },
   image: {
     flex: 1,
     height: 300,
+  },
+  imageContainer: {
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    padding: 5,
   },
   section: {
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderColor: '#ddd',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     padding: 5,
-    position: 'relative'
+    position: 'relative',
   },
   thumbnail: {
-    height: 50,
-    width: 50
+    height: 80,
+    width: 80
   },
   thumbnailContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 10
+    marginRight: 10
   }
 });
 
