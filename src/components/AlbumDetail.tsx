@@ -10,7 +10,12 @@ type AlbumDetailProps = {
 export const AlbumDetail: React.FC<AlbumDetailProps> = ({ album }) => {
   return (
     <View>
-      <Card title={album.title}/>
+      <Card
+        title={album.id.toString()}
+        description={album.title}
+        thumbnailUri={album.thumbnailUrl}
+        imageUri={album.url}
+      />
     </View>
   );
 };

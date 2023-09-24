@@ -1,15 +1,32 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 type CardProps = {
   title: string;
+  description: string;
+  thumbnailUri: string;
+  imageUri: string;
 }
 
-export const Card: React.FC<CardProps> = ({ title }) => {
+export const Card: React.FC<CardProps> = ({ title, description, thumbnailUri, imageUri  }) => {
+
+  const source = useMemo(() => {
+    return { uri: thumbnailUri }
+  }, [thumbnailUri]);
+
   return (
     <View style={styles.container}>
       <View style={styles.section}>
-        <Text>{title}</Text>
+        <View style={styles.thumbnailContainer}>
+          <Image source={source} style={styles.thumbnail}/>
+        </View>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>{title}</Text>
+          <Text>{description}</Text>
+        </View>
+      </View>
+      <View style={styles.section}>
+        <Image source={{ uri: imageUri }} style={styles.image}/>
       </View>
     </View>
   );
@@ -31,6 +48,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 2
   },
+  header: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+
+  },
+  headerText: {
+    fontSize: 18
+  },
+  image: {
+    flex: 1,
+    height: 300,
+  },
   section: {
     backgroundColor: '#fff',
     borderBottomWidth: 1,
@@ -39,6 +68,15 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: 5,
     position: 'relative'
+  },
+  thumbnail: {
+    height: 50,
+    width: 50
+  },
+  thumbnailContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 10
   }
 });
 
