@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Album } from '../models/album';
+import Card from './Card';
 
 type AlbumDetailProps = {
   album: Album;
@@ -9,7 +10,7 @@ type AlbumDetailProps = {
 export const AlbumDetail: React.FC<AlbumDetailProps> = ({ album }) => {
   return (
     <View>
-      <Text>{album.title}</Text>
+      <Card title={album.title}/>
     </View>
   );
 };
