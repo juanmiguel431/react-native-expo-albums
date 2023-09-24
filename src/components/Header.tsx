@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Text, View, StyleSheet, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export const Header = () => {
+type HeaderPros = PropsWithChildren & { title: string; };
+
+export const Header: React.FC<HeaderPros> = ({ title }) => {
   const insets = useSafeAreaInsets();
 
   const safeArea = {
@@ -16,7 +18,7 @@ export const Header = () => {
     <View
       style={StyleSheet.flatten([styles.container])}
     >
-      <Text style={styles.text}>Albums!</Text>
+      <Text style={styles.text}>{title}</Text>
     </View>
   );
 };

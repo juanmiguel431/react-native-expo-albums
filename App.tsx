@@ -8,7 +8,7 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView>
         <StatusBar style="auto"/>
-        <Header/>
+        <Header title="Albums!"/>
       </SafeAreaView>
     </SafeAreaProvider>
   );
