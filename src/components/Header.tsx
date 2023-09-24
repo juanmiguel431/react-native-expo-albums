@@ -1,9 +1,14 @@
 import React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Platform } from 'react-native';
+import { Text, View, StyleSheet, Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const Header = () => {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.container}>
+    <View
+      style={StyleSheet.flatten([styles.container, {marginTop: insets.top, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right, }])}
+    >
       <Text style={styles.text}>Albums!</Text>
     </View>
   );
@@ -12,12 +17,12 @@ export const Header = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#f8f8f8',
-    // borderWidth: 3,
+    backgroundColor: '#c5c2c2',
+    borderWidth: 3,
     elevation: 25,
     height: 120,
     justifyContent: 'center',
-    paddingTop: 15,
+    // paddingTop: 15,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
