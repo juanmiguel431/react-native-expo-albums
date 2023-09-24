@@ -6,8 +6,10 @@ import { Header } from './src/components';
 export default function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar style="auto" />
-      <Header />
+      <SafeAreaView>
+        <StatusBar style="auto"/>
+        <Header/>
+      </SafeAreaView>
     </SafeAreaProvider>
   );
 }

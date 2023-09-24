@@ -5,9 +5,16 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 export const Header = () => {
   const insets = useSafeAreaInsets();
 
+  const safeArea = {
+    marginTop: insets.top,
+    paddingBottom: insets.bottom,
+    paddingLeft: insets.left,
+    paddingRight: insets.right
+  };
+
   return (
     <View
-      style={StyleSheet.flatten([styles.container, {marginTop: insets.top, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right, }])}
+      style={StyleSheet.flatten([styles.container])}
     >
       <Text style={styles.text}>Albums!</Text>
     </View>
@@ -17,23 +24,29 @@ export const Header = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#c5c2c2',
-    borderWidth: 3,
-    elevation: 25,
+    backgroundColor: '#f8f8f8',
+    borderWidth: 1,
+    elevation: 40,
     height: 120,
     justifyContent: 'center',
     // paddingTop: 15,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.1,
-        paddingTop: 15
-      },
-      android: {
-        elevation: 10
-      }
-    })
+
+    position: 'relative',
+    shadowColor: '#0e0d0d',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.1,
+
+    // ...Platform.select({
+    //   ios: {
+    //     shadowColor: '#0e0d0d',
+    //     shadowOffset: { width: 0, height: 10 },
+    //     shadowOpacity: 0.1,
+    //     paddingTop: 15
+    //   },
+    //   android: {
+    //     elevation: 2
+    //   }
+    // })
 
   },
   text: {
