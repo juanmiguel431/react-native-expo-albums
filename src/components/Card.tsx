@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Linking } from 'react-native';
+import Button from './Button';
 
 type CardProps = {
   title: string;
@@ -8,7 +9,7 @@ type CardProps = {
   imageUri: string;
 }
 
-export const Card: React.FC<CardProps> = ({ title, description, thumbnailUri, imageUri  }) => {
+export const Card: React.FC<CardProps> = ({ title, description, thumbnailUri, imageUri }) => {
 
   const source = useMemo(() => {
     return { uri: thumbnailUri }
@@ -16,17 +17,28 @@ export const Card: React.FC<CardProps> = ({ title, description, thumbnailUri, im
 
   return (
     <View style={styles.container}>
-      <View style={styles.section}>
+
+      <View style={styles.mainSection}>
         <View style={styles.thumbnailContainer}>
           <Image source={source} style={styles.thumbnail}/>
         </View>
+
         <View style={styles.header}>
           <Text style={styles.headerText}>{title}</Text>
           <Text>{description}</Text>
         </View>
       </View>
-      <View style={styles.imageContainer}>
+
+      <View style={styles.imageSection}>
         <Image source={{ uri: imageUri }} style={styles.image}/>
+      </View>
+
+      <View style={styles.buttonSection}>
+        <Button
+          title="Click Me!!!"
+          onClick={() => {
+            Linking.openURL('https://www.google.com');
+          }}/>
       </View>
     </View>
   );
@@ -60,12 +72,17 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 300,
   },
-  imageContainer: {
+  imageSection: {
     borderBottomWidth: 1,
     borderColor: '#ddd',
     padding: 5,
   },
-  section: {
+  buttonSection: {
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    padding: 5,
+  },
+  mainSection: {
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderColor: '#ddd',
